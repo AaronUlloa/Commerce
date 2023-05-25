@@ -1,0 +1,32 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.barra{
+  top: .5rem;
+  background-color: rgba(v.$negro, .5);
+  backdrop-filter: blur(.4rem);
+  /* position: sticky; */
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+  border-radius: .5rem;
+  &.scrolled {
+    background: rgba(#111, 0.9);
+  }
+  &__content{
+    @include m.container;
+    display: flex;
+    flex-direction: column;
+    @include m.desktop{
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  &__logo{
+    @include m.logo;
+    @include m.fluid-text (2rem, 3rem);
+    @include m.fade-text(v.$azul, v.$secundario);
+  }
+}

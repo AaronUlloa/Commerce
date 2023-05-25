@@ -1,0 +1,22 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.navegation{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  @include m.desktop{
+    flex-direction: row;
+  }
+
+  &__link{
+    color: v.$blanco;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    font-weight: v.$bold;
+    text-align: center;
+    &:hover{
+      color: v.$azul;
+    }
+  }
+}

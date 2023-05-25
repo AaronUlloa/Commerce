@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <title>
+      {% block title %}Auction{% endblock%}
+    </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{% static 'css/app.css' %}" rel="stylesheet">  
+  </head>
+  <body>
+    <div class="container">
+      <header class="container__header">
+      
+      </header>
+      {% block body %} {% endblock%}
+    </div>
+  </body>
+</html>

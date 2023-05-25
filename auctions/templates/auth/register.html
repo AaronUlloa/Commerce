@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block body %}
+<main class="auth">
+  <h2 class="auth__heading">{{ title }}</h2>
+  <p class="auth__text">Registra tu cuenta en DevBuy</p>
+  <form class="forms" action="{% url 'auctions:register' %}" method="post">
+    <div class="forms__field">
+      <label for="name" class="forms__label">Name</label>
+      <input type="text" class="forms__input" placeholder="your name here" id="name" name="name" required>
+    </div>
+    <div class="forms__field">
+      <label for="last-name" class="forms__label">Last Name</label>
+      <input type="text" class="forms__input" placeholder="your last name here" id="last-name" name="last-name">
+    </div>
+    <div class="forms__field">
+      <label for="email" class="forms__label">Email</label>
+      <input type="email" class="forms__input" placeholder="your email here" id="email" name="email" required>
+    </div>
+    <div class="forms__field">
+      <label for="password" class="forms__label">Password</label>
+      <input type="password" class="forms__input" placeholder="your password here" id="password" name="password"
+        required>
+    </div>
+    <div class="forms__field">
+      <label for="password2" class="forms__label">Confirm your Password</label>
+      <input type="password" class="forms__input" placeholder="your password here" id="password2" name="password2"
+        required>
+    </div>
+    <input type="submit" class="forms__submit" value="Crear Cuenta">
+  </form>
+  <div class="actions">
+    <a href="{% url 'auctions:login' %}" class="actions__link">Ya tienes una cuenta? Inicia Sesion.</a>
+    <a href="{% url 'auctions:forget' %}" class="actions__link">Olvidaste tu Password?.</a>
+  </div>
+</main>
+{% endblock %}
