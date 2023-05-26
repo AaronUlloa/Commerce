@@ -2,7 +2,10 @@
 {% block body %}
     <main class="auth">
         <h2 class="auth__heading">{{ title }}</h2>
-        <p class="auth__text">Inicia Sesion en DevBuy</p>
+        <p class="auth__text">Inicia Sesion en BidHub</p>
+        {% if message %}
+          <p class="auth__text">{{ message }}</p>
+        {% endif %}
         <form class="forms" action="{% url 'auctions:login' %}" method="post">
             {% csrf_token %}
             <div class="forms__field">
