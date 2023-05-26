@@ -34,7 +34,9 @@ def login_view(request):
         # Check if authentication successful
         if user is not None:
             login(request, user)
-            return HttpResponseRedirect(reverse("index"))
+            return render(request,"view/index.html", {
+                "title": "Lista de Articulos Disponibles"
+                })
         else:
             return render(request, "auth/login.html", {
                 "message": "Invalid username and/or password."
