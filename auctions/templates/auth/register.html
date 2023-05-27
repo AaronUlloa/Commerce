@@ -5,12 +5,8 @@
   <p class="auth__text">Registra tu cuenta en DevBuy</p>
   <form class="forms" action="{% url 'auctions:register' %}" method="post">
     <div class="forms__field">
-      <label for="name" class="forms__label">Name</label>
-      <input type="text" class="forms__input" placeholder="your name here" id="name" name="name" required>
-    </div>
-    <div class="forms__field">
-      <label for="last-name" class="forms__label">Last Name</label>
-      <input type="text" class="forms__input" placeholder="your last name here" id="last-name" name="last-name">
+      <label for="name" class="forms__label">UserName</label>
+      <input type="text" class="forms__input" placeholder="your username here" id="username" name="username" required>
     </div>
     <div class="forms__field">
       <label for="email" class="forms__label">Email</label>

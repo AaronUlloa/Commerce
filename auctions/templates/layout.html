@@ -10,11 +10,33 @@
     <link href="{% static 'css/app.css' %}" rel="stylesheet">  
   </head>
   <body>
-    <div class="container">
-      <header class="container__header">
-      
-      </header>
-      {% block body %} {% endblock%}
-    </div>
-  </body>
+    <header class="header">
+      <div class="header__contenedor">
+        <nav class="header__navegation">
+          <div class="header__contenedor">
+            <div class="header__logo">
+              <a href="#">
+                <h2 class="header__logo">
+                  &#60;BidHub />
+                </h2>
+              </a>
+            </div>
+          </div>
+            <a class="header__link" href="{% url 'auctions:index' %}">Home</a>
+            {% if user.is_authenticated %}
+            <a class="header__link" href="{% url 'auctions:addNew' %}">Pubicar</a>
+              <a class="header__link" href="#">Categorias</a>
+              <a class="header__link" href="#">Carrito</a>
+              <a class="header__link" href="{% url 'auctions:logout' %}">Logout</a>
+            {% else %}
+            <a class="header__link" href="{% url 'auctions:login' %}">Login</a>
+            <a class="header__link" href="{% url 'auctions:register' %}">Registrar</a>
+            {% endif %}
+        </nav>
+      </div>
+    </header>
+    <section>
+       {% block body %} {% endblock%}
+    </section>
+     </body>
 </html>

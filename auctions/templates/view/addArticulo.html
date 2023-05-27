@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<main class="listing">
+  <h2 class="listing__heading">{{ title }}</h2>
+  <p class="listing__text">BidHub</p>
+  <form class="forms" action="{% url 'auctions:addNew' %}" method="post">
+    <div class="forms__field">
+      <label for="title" class="forms__label">Titulo(*)</label>
+      <input type="text" class="forms__input" placeholder="titulo aqui" id="title" name="title" required>
+    </div>
+    <div class="forms__field">
+      <label for="description" class="forms__label">Descripcion(*)</label>
+      <textarea rows="4" cols="2" class="forms__input" id="description" name="description" required></textarea>
+      <!-- <input type="email" class="forms__input" placeholder="your email here" id="email" name="email" required> -->
+    </div>
+    <div class="forms__field">
+      <label for="image1" class="forms__label">Imagen 1</label>
+      <input type="file" class="forms__input" placeholder="tu primera imagen" id="image1" name="image1" accept=".jpg, .jpeg, .png"  required>
+    </div>
+    <div class="forms__field">
+      <label for="image2" class="forms__label">Imagen 2</label>
+      <input type="file" class="forms__input" placeholder="tu primera imagen" id="image2" name="image2" accept=".jpg, .jpeg, .png" >
+    </div>
+    <div class="forms__field">
+      <label for="image3" class="forms__label">Imagen 3</label>
+      <input type="text" class="forms__input" placeholder="url de tu imagen" id="image3" name="image3">
+    </div>
+    <div class="forms__field">
+      <label for="category" class="forms__label">Escoge Categoria</label>
+      <select name="category" id="category" class="forms__input">
+        <option value="">Escoge tu Categoria</option>
+        <option value="msasdadsasd">dasdasdasd</option>
+        <option value="dasdasda">dasdasddsasda</option>
+      </select>
+      <input type="text" class="forms__input" placeholder="your password here" id="category" name="category"
+        required>
+    </div>
+    <input type="submit" class="forms__submit" value="Crear Cuenta">
+  </form>
+
+</main>
+{% endblock %}

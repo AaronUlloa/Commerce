@@ -8,13 +8,34 @@ from .models import User, Bid, Category, Listing, Comment
 
 # Create your views here.
 def index(request):
-    activeListing = Listing.objects.filter(isActive = True)
-    allCategories = Category.objects.all()
+    activeListings = Listing.objects.filter(isActive=True)
+    allCategory = Category.objects.all()
     return render(request, "view/index.html", {
-        "title": "Lista de Articulos Activos",
-        "listing": activeListing,
-        "categories": allCategories
+        "title": "Active Listing",
+        "listings": activeListings,
+        "categories": allCategory
+    })
+
+def showCategories(request):
+    activeListings = Listing.objects.filter(isActive=True)
+    if activeListings:
+        return render(request, "auctions/index.html", {
+            "title": "Categories",
+            "categories": Category.objects.all(),
+            "listings": activeListings
         })
+    else:
+        return render(request, "auctions/index.html", {
+            "title": "Categories",
+            "categories": Category.objects.all(),
+            "message": "No Listing"
+        })
+
+def addNew(request):
+    return render(request, "view/addArticulo.html",{
+            "title": "Publica Tu Articulo"
+        })
+        
 
 
 def forget(request):
@@ -34,20 +55,20 @@ def login_view(request):
         # Check if authentication successful
         if user is not None:
             login(request, user)
-            return render(request,"view/index.html", {
-                "title": "Lista de Articulos Disponibles"
-                })
+            return HttpResponseRedirect(reverse("auctions:index"))
         else:
             return render(request, "auth/login.html", {
                 "message": "Invalid username and/or password."
             })
     else:
-        return render(request, "auth/login.html")
+        return render(request, "auth/login.html",{
+            "title": "Ingresa ahora en BidHub"
+            })
 
 
 def logout_view(request):
     logout(request)
-    return HttpResponseRedirect(reverse("index"))
+    return HttpResponseRedirect(reverse("auctions:index"))
 
 
 def register(request):
@@ -72,6 +93,8 @@ def register(request):
                 "message": "Username already taken."
             })
         login(request, user)
-        return HttpResponseRedirect(reverse("index"))
+        return HttpResponseRedirect(reverse("auctions:index"))
     else:
-        return render(request, "auth/register.html")
+        return render(request, "auth/register.html", {
+            "title": "Registrate ahora en BidHub"
+            })
