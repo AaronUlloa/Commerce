@@ -4,6 +4,22 @@
   <main class="bidhub">
     <h2 class="bidhub__heading">{{ title }}</h2>
     <p class="bidhub__descripcion">Lorem ipsum dolor sit amet,rVoluptat</p>
-  
+
+    {% for lis in listings %}
+    <div class="bidhub__grid">
+      <div class="bidhubs">
+        <picture> 
+          <!-- <source srcset="img/articulos/{{ lis.imag3 }}" type="image/png"> -->
+          <img class="bidhubs__imagen" loading="lazy" width="200" height="300" src="{{ lis.image3 }}" alt="Articulo">
+        </picture>
+        <div class="bidhubs__informacion">
+          <h4 class="bidhubs__title">{{ lis.title }}</h4>
+          <p class="bidhubs__description">{{ lis.description }}</p>
+          <p class="bidhubs__price-text">Precio del Articulo: <h6 class="bidhubs__price">{{ lis.price }}</h6></p>
+          <h5 class="bidhubs__owner">{{ lis.owner }}</h5>
+        </div>
+      </div>  
+    {% endfor %}
+  </div>
   </main>
 {% endblock %}

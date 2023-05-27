@@ -371,7 +371,7 @@ h3 {
   width: min(95%, 140rem);
   margin: 0 auto;
   display: grid;
-  gap: 3rem;
+  gap: 5rem;
   grid-template-columns: repeat(1, 1fr);
 }
 @media (min-width: 768px) {
@@ -379,11 +379,41 @@ h3 {
     display: grid;
     gap: 5rem;
     grid-template-columns: repeat(2, 1fr);
-    text-align: center;
+  }
+}
+@media (min-width: 1200px) {
+  .bidhub__grid {
+    display: grid;
+    gap: 5rem;
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 .bidhub__texto {
   line-height: 2;
+}
+
+.bidhubs {
+  border: 1px solid #7f8ea3;
+  padding: 3rem;
+}
+.bidhubs__nombre {
+  font-weight: 900;
+  font-size: 2.6rem;
+  margin: 2rem 0;
+}
+.bidhubs__price-text {
+  color: #1E293B;
+  margin: 1rem 0;
+  font-size: 2rem;
+  line-height: 1.5;
+  display: inline;
+}
+.bidhubs__price {
+  color: #02db02;
+  margin: 1rem 0;
+  font-size: 2rem;
+  line-height: 1.6;
+  display: inline;
 }
 
 .listing {

@@ -4,13 +4,32 @@
 .bidhub{
   &__grid{
     @include m.container;
-    @include m.grid(1, 3rem);
+    @include m.grid(1, 5rem);
     @include m.tablet{
       @include m.grid(2, 5rem);
-      text-align: center;
+    }
+    @include m.xl_desktop{
+      @include m.grid(3, 5rem);
     }
   }
   &__texto{
     line-height: 2;
+  }
+}
+.bidhubs{
+  @include m.card;
+  &__price-text{
+    color: v.$gris-oscuro;
+    margin: 1rem 0;
+    font-size: 2rem;
+    line-height: 1.5;
+    display: inline;
+  }
+  &__price{
+    color: v.$verde;
+    margin: 1rem 0;
+    font-size: 2rem;
+    line-height: 1.6;
+    display: inline;
   }
 }
