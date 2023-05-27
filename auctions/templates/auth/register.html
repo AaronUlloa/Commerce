@@ -4,6 +4,7 @@
   <h2 class="auth__heading">{{ title }}</h2>
   <p class="auth__text">Registra tu cuenta en DevBuy</p>
   <form class="forms" action="{% url 'auctions:register' %}" method="post">
+    {% csrf_token %}
     <div class="forms__field">
       <label for="name" class="forms__label">UserName</label>
       <input type="text" class="forms__input" placeholder="your username here" id="username" name="username" required>

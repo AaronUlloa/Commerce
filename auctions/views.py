@@ -11,7 +11,7 @@ def index(request):
     activeListings = Listing.objects.filter(isActive=True)
     allCategory = Category.objects.all()
     return render(request, "view/index.html", {
-        "title": "Active Listing",
+        "title": "Publicaciones Activas",
         "listings": activeListings,
         "categories": allCategory
     })
@@ -32,10 +32,45 @@ def showCategories(request):
         })
 
 def addNew(request):
-    return render(request, "view/addArticulo.html",{
-            "title": "Publica Tu Articulo"
+    if request.method == "GET":
+        allCategories = Category.objects.all()
+        return render(request, "view/addArticulo.html",{
+            "title": "Publica Tu Articulo",
+            "categories": allCategories
         })
+    else:
+        # Obteniendo la data del formulario
+        title = request.POST["title"]
+        description = request.POST["description"]
+        image1 = request.POST["image1"]
+        image2 = request.POST["image2"]
+        image3 = request.POST["image3"]
+        price = request.POST["price"]
+        category = request.POST["category"]
+        # Obteniendo la categoria escogida
+        categoryData = Category.objects.get(categoryName = category)
+        # Obteniendo el precio
+        # priceData = Bid.objects.get(bid = price)
+        # Usuario Actual
+        currenUser = request.user
+        # Creando la nueva publicacion
+        newListing = Listing(
+                title=title,
+                image1=image1,
+                image2=image2,
+                image3=image3,
+                description=description,
+                category=categoryData,
+                price=price,
+                owner=currenUser
+                )
+        # Guardando la publicacion
+        newListing.save()
+        # Retornamos al index
+        return HttpResponseRedirect(reverse("auctions:index"))
         
+
+
 
 
 def forget(request):

@@ -4,7 +4,8 @@
 <main class="listing">
   <h2 class="listing__heading">{{ title }}</h2>
   <p class="listing__text">BidHub</p>
-  <form class="forms" action="{% url 'auctions:addNew' %}" method="post">
+  <form class="forms" action="{% url 'auctions:addNew' %}" method="POST">
+    {% csrf_token %}
     <div class="forms__field">
       <label for="title" class="forms__label">Titulo(*)</label>
       <input type="text" class="forms__input" placeholder="titulo aqui" id="title" name="title" required>
@@ -26,17 +27,20 @@
       <label for="image3" class="forms__label">Imagen 3</label>
       <input type="text" class="forms__input" placeholder="url de tu imagen" id="image3" name="image3">
     </div>
+    <div class="form__field">
+      <label for="price" class="forms__label">Precio</label>
+      <input type="number" name="price" id="price" class="forms__input" min="0" value="" required>
+    </div>
     <div class="forms__field">
       <label for="category" class="forms__label">Escoge Categoria</label>
       <select name="category" id="category" class="forms__input">
         <option value="">Escoge tu Categoria</option>
-        <option value="msasdadsasd">dasdasdasd</option>
-        <option value="dasdasda">dasdasddsasda</option>
+        {% for cat in categories %}
+          <option value="{{ cat }}">{{ cat }}</option>
+        {% endfor %}
       </select>
-      <input type="text" class="forms__input" placeholder="your password here" id="category" name="category"
-        required>
     </div>
-    <input type="submit" class="forms__submit" value="Crear Cuenta">
+    <input type="submit" class="forms__submit" value="Publicar Articulo">
   </form>
 
 </main>

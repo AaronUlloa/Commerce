@@ -1,0 +1,16 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.bidhub{
+  &__grid{
+    @include m.container;
+    @include m.grid(1, 3rem);
+    @include m.tablet{
+      @include m.grid(2, 5rem);
+      text-align: center;
+    }
+  }
+  &__texto{
+    line-height: 2;
+  }
+}

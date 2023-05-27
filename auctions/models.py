@@ -39,8 +39,7 @@ class Listing(models.Model):
     description = models.CharField(max_length=500)
     category = models.ForeignKey(
         Category, on_delete=models.CASCADE, blank=True, null=True, related_name="category")
-    price = models.ForeignKey(
-        Bid, on_delete=models.CASCADE, blank=True, null=True, related_name="bidPrice")
+    price = models.FloatField(default=0.00)
     owner = models.ForeignKey(
         User, on_delete=models.CASCADE, blank=True, null=True, related_name="userOwner")
     isActive = models.BooleanField(default=True)
